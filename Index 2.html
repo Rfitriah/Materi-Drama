@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mengenal Lebih Dekat Dunia Pementasan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chosen Palette: "Teal Harmony" -->
+    <!-- Application Structure Plan: The SPA transforms the linear presentation into a non-linear, interactive experience using a sectioned single-page layout. This structure was chosen to break down the conceptual information into manageable, thematic sections (What is Drama, Elements, Types, Project Steps), preventing cognitive overload and encouraging user-driven exploration. Key interactions include an interactive accordion for the 'Elements of Drama' section, allowing users to drill down into details without being overwhelmed, and smooth-scrolling navigation for quick access. This design prioritizes user understanding and synthesis over a simple replication of the source document's flow. -->
+    <!-- Visualization & Content Choices: 
+        - Report Info: Comparison of Drama, Prose, Poetry -> Goal: Compare -> Viz/Method: Styled HTML Table -> Interaction: None (static comparison) -> Justification: A table offers the clearest side-by-side comparison of features. -> Library/Method: HTML/Tailwind.
+        - Report Info: Elements of Drama (Theme, Plot, etc.) -> Goal: Organize & Explore -> Viz/Method: Interactive Accordion -> Interaction: Click to reveal/hide detailed content -> Justification: Breaks down complex information, prevents a long scroll, and engages the user by requiring action to reveal content. -> Library/Method: HTML/Tailwind/Vanilla JS.
+        - Report Info: Steps to prepare a performance -> Goal: Instruct -> Viz/Method: Numbered Step-by-Step Visual Guide -> Interaction: None (static guide) -> Justification: A clear, sequential visual guide is the most effective way to present a process. -> Library/Method: HTML/Tailwind with flexbox/grid.
+        - Report Info: Definitions & Concepts -> Goal: Inform -> Viz/Method: Styled text blocks with blockquotes for emphasis. -> Interaction: None -> Justification: Clear textual presentation is best for definitions. -> Library/Method: HTML/Tailwind. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+        }
+        .accordion-button.active + .accordion-content {
+            max-height: 1000px; /* Adjust as needed */
+        }
+        .accordion-button .icon {
+            transition: transform 0.3s ease;
+        }
+        .accordion-button.active .icon {
+            transform: rotate(180deg);
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-stone-50 text-gray-800">
+
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="text-2xl font-bold text-teal-700" style="font-family: 'Playfair Display', serif;">Dunia Drama</div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#apa-itu-drama" class="text-gray-600 hover:text-teal-600">Definisi</a>
+                <a href="#perbedaan" class="text-gray-600 hover:text-teal-600">Perbedaan</a>
+                <a href="#unsur-drama" class="text-gray-600 hover:text-teal-600">Unsur</a>
+                <a href="#jenis-drama" class="text-gray-600 hover:text-teal-600">Jenis</a>
+                <a href="#proyek-kolaboratif" class="text-gray-600 hover:text-teal-600">Proyek</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+        
+        <section id="hero" class="text-center py-16 md:py-24 bg-teal-600 rounded-2xl text-white mb-12">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4" style="font-family: 'Playfair Display', serif;">Mengenal Lebih Dekat Dunia Pementasan</h1>
+            <p class="text-lg md:text-xl max-w-3xl mx-auto text-teal-100">Jelajahi seni yang merefleksikan kehidupan, membangkitkan emosi, dan menyatukan kita melalui cerita.</p>
+        </section>
+
+        <section id="apa-itu-drama" class="mb-12 p-8 bg-white rounded-2xl shadow-lg">
+            <h2 class="text-3xl font-bold mb-6 text-teal-700" style="font-family: 'Playfair Display', serif;">🎭 Apa Itu Drama?</h2>
+            <p class="text-lg mb-6 leading-relaxed">
+                Drama berasal dari bahasa Yunani, dari kata kerja <strong class="font-semibold text-teal-600">dran</strong> yang berarti "berbuat" atau "melakukan". Ini menunjukkan bahwa inti dari drama adalah **perbuatan** dan **gerak**. Drama adalah sebuah cerita yang membawakan tema tertentu dengan dialog dan gerak sebagai pengungkapannya, sebuah cerminan kehidupan yang disajikan dalam aksi.
+            </p>
+            <blockquote class="border-l-4 border-teal-500 pl-4 py-2 my-6 bg-teal-50 rounded-r-lg">
+                <p class="italic text-gray-700">"Drama adalah hidup yang ditampilkan dalam gerak (life presented in action)."</p>
+                <cite class="block text-right font-semibold text-gray-600 mt-2">— Moulton</cite>
+            </blockquote>
+            <blockquote class="border-l-4 border-teal-500 pl-4 py-2 bg-teal-50 rounded-r-lg">
+                <p class="italic text-gray-700">"Drama adalah kesenian melukis sifat dan sikap manusia dengan gerak."</p>
+                <cite class="block text-right font-semibold text-gray-600 mt-2">— Balthazar Verhagen</cite>
+            </blockquote>
+             <div class="mt-8 bg-amber-50 border-l-4 border-amber-400 p-6 rounded-lg">
+                <h3 class="text-xl font-semibold text-amber-800 mb-2">Pertanyaan Pemantik</h3>
+                <ol class="list-decimal list-inside space-y-2 text-gray-700">
+                    <li>Pernahkah Anda terpukau oleh sebuah pertunjukan yang membuat Anda tertawa, menangis, atau merenung?</li>
+                    <li>Menurut Anda, mengapa drama memiliki kekuatan untuk memupuk toleransi dan saling menghargai di antara perbedaan yang ada?</li>
+                </ol>
+            </div>
+        </section>
+        
+        <section id="perbedaan" class="mb-12 p-8 bg-white rounded-2xl shadow-lg">
+            <h2 class="text-3xl font-bold mb-6 text-teal-700" style="font-family: 'Playfair Display', serif;">📜 Perbedaan Drama dengan Puisi dan Prosa</h2>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-teal-100">
+                            <th class="p-4 font-semibold text-teal-800 rounded-tl-lg">Bentuk Karya Sastra</th>
+                            <th class="p-4 font-semibold text-teal-800">Bentuk Bahasa</th>
+                            <th class="p-4 font-semibold text-teal-800 rounded-tr-lg">Isi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-gray-200">
+                            <td class="p-4 font-semibold">Puisi</td>
+                            <td class="p-4">Baris dan bait, bahasa indah, penuh majas, rima.</td>
+                            <td class="p-4">Mengungkapkan perasaan atau gagasan secara padat dan estetis.</td>
+                        </tr>
+                        <tr class="border-b border-gray-200 bg-stone-50">
+                            <td class="p-4 font-semibold">Prosa</td>
+                            <td class="p-4">Paragraf, bahasa naratif, lebih bebas.</td>
+                            <td class="p-4">Menceritakan peristiwa atau rangkaian kejadian secara rinci.</td>
+                        </tr>
+                        <tr class="bg-white">
+                            <td class="p-4 font-semibold rounded-bl-lg">Drama</td>
+                            <td class="p-4">Dialog dan lakuan (gerak), ditulis dalam format naskah.</td>
+                            <td class="p-4 rounded-br-lg">Menggambarkan cerita melalui interaksi dan tindakan tokoh untuk dipentaskan.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="unsur-drama" class="mb-12 p-8 bg-white rounded-2xl shadow-lg">
+            <h2 class="text-3xl font-bold mb-6 text-teal-700" style="font-family: 'Playfair Display', serif;">🧩 Unsur-Unsur Pembangun Drama</h2>
+            <div class="space-y-4" id="accordion-container">
+                <!-- Accordion items will be inserted here by JavaScript -->
+            </div>
+        </section>
+
+        <section id="jenis-drama" class="mb-12 p-8 bg-white rounded-2xl shadow-lg">
+            <h2 class="text-3xl font-bold mb-6 text-teal-700" style="font-family: 'Playfair Display', serif;">🎭 Jenis-Jenis Pertunjukan Drama</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-teal-50 p-6 rounded-lg">
+                    <h3 class="text-2xl font-semibold mb-3 text-teal-800">Berdasarkan Tema</h3>
+                    <ul class="space-y-2 list-disc list-inside">
+                        <li><strong>Tragedi:</strong> Bercerita tentang kesedihan dan kemalangan.</li>
+                        <li><strong>Komedi:</strong> Bercerita tentang lelucon dan tingkah laku konyol.</li>
+                        <li><strong>Tragedi Komedi:</strong> Perpaduan antara kesedihan dan lelucon.</li>
+                    </ul>
+                </div>
+                <div class="bg-indigo-50 p-6 rounded-lg">
+                    <h3 class="text-2xl font-semibold mb-3 text-indigo-800">Berdasarkan Teknik Penyajian</h3>
+                    <ul class="space-y-2 list-disc list-inside">
+                        <li><strong>Realis:</strong> Disajikan mendekati kenyataan yang sebenarnya (bahasa, pakaian, tata panggung).</li>
+                        <li><strong>Simbolik:</strong> Pementasan tidak mirip kenyataan, kaya akan simbol, puisi, dan musik.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="proyek-kolaboratif" class="mb-12 p-8 bg-white rounded-2xl shadow-lg">
+            <h2 class="text-3xl font-bold mb-6 text-teal-700" style="font-family: 'Playfair Display', serif;">🤝 Mempersiapkan Pertunjukan Drama: Sebuah Proyek Kolaboratif</h2>
+            <p class="text-lg mb-8 leading-relaxed">Mementaskan sebuah drama adalah proyek besar yang membutuhkan kerja sama tim yang solid. Ini adalah kesempatan emas untuk menerapkan semua yang telah kita pelajari!</p>
+            <div class="space-y-6">
+                <div class="flex items-start space-x-4">
+                    <div class="flex-shrink-0 bg-teal-500 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg">1</div>
+                    <div>
+                        <h4 class="font-bold text-xl">Naskah Drama</h4>
+                        <p class="text-gray-600">Memilih atau mengadaptasi cerpen menjadi naskah drama, memastikan strukturnya lengkap.</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-4">
+                    <div class="flex-shrink-0 bg-teal-500 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg">2</div>
+                    <div>
+                        <h4 class="font-bold text-xl">Sutradara & Tim</h4>
+                        <p class="text-gray-600">Memimpin proses, melatih pemeran, dan mengarahkan tim teknis.</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-4">
+                    <div class="flex-shrink-0 bg-teal-500 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg">3</div>
+                    <div>
+                        <h4 class="font-bold text-xl">Pemain / Pemeran</h4>
+                        <p class="text-gray-600">Memahami karakter tokoh, menjiwai peran, dan berlatih dialog serta lakuan.</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-4">
+                    <div class="flex-shrink-0 bg-teal-500 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg">4</div>
+                    <div>
+                        <h4 class="font-bold text-xl">Tata Panggung & Properti</h4>
+                        <p class="text-gray-600">Mendesain panggung dan menyiapkan properti untuk menggambarkan latar tempat dan suasana.</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-4">
+                    <div class="flex-shrink-0 bg-teal-500 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg">5</div>
+                    <div>
+                        <h4 class="font-bold text-xl">Tata Suara & Musik</h4>
+                        <p class="text-gray-600">Menciptakan musik dan efek suara yang mendukung suasana dan emosi cerita.</p>
+                    </div>
+                </div>
+                 <div class="flex items-start space-x-4">
+                    <div class="flex-shrink-0 bg-teal-500 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg">6</div>
+                    <div>
+                        <h4 class="font-bold text-xl">Tata Lampu</h4>
+                        <p class="text-gray-600">Mengatur pencahayaan untuk memperjelas mimik pemeran dan mendukung keartistikan panggung.</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-4">
+                    <div class="flex-shrink-0 bg-teal-500 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg">7</div>
+                    <div>
+                        <h4 class="font-bold text-xl">Kostum & Tata Wajah</h4>
+                        <p class="text-gray-600">Menyiapkan pakaian dan riasan yang sesuai dengan karakter tokoh.</p>
+                    </div>
+                </div>
+                 <div class="flex items-start space-x-4">
+                    <div class="flex-shrink-0 bg-teal-500 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg">8</div>
+                    <div>
+                        <h4 class="font-bold text-xl">Promosi</h4>
+                        <p class="text-gray-600">Membuat pamflet atau poster untuk mengundang penonton.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="penutup" class="text-center py-16">
+             <h2 class="text-3xl font-bold mb-4 text-teal-700" style="font-family: 'Playfair Display', serif;">Drama sebagai Jendela Dunia</h2>
+             <p class="text-lg max-w-3xl mx-auto text-gray-700">Drama bukan hanya sekadar tontonan, tetapi juga sebuah jendela untuk memahami diri kita, masyarakat, dan dunia di sekitar kita. Melalui drama, kita belajar tentang keberagaman, empati, konflik, dan resolusi.</p>
+        </section>
+
+    </main>
+    
+    <footer class="bg-gray-800 text-white py-6 text-center">
+        <p>&copy; 2025 Aplikasi Interaktif Dunia Drama. Dibuat dengan semangat literasi.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const accordionData = [
+                { title: 'Tema', content: 'Gagasan sentral atau utama yang menjadi dasar disusunnya sebuah pentas drama.' },
+                { title: 'Alur / Plot', content: 'Jalinan cerita dari awal sampai akhir, meliputi permasalahan, konflik, klimaks, dan penyelesaian. Biasanya terbagi dalam: <ul><li class="mt-2 ml-4 list-disc"><strong>Prolog:</strong> Bagian pembuka drama.</li><li class="mt-1 ml-4 list-disc"><strong>Dialog:</strong> Percakapan antartokoh, merupakan unsur utama drama.</li><li class="mt-1 ml-4 list-disc"><strong>Epilog:</strong> Bagian penutup drama.</li></ul>' },
+                { title: 'Tokoh dan Perwatakan', content: 'Karakter-karakter yang terlibat dalam pementasan dengan penggambaran sifatnya. <ul><li class="mt-2 ml-4 list-disc"><strong>Protagonis:</strong> Tokoh utama yang mewakili sifat baik.</li><li class="mt-1 ml-4 list-disc"><strong>Antagonis:</strong> Tokoh yang berlawanan dengan protagonis.</li><li class="mt-1 ml-4 list-disc"><strong>Campuran:</strong> Tokoh dengan perwatakan baik dan buruk.</li></ul>' },
+                { title: 'Latar / Setting', content: 'Penggambaran latar kejadian, meliputi: <ul><li class="mt-2 ml-4 list-disc"><strong>Latar Tempat:</strong> Di mana peristiwa terjadi.</li><li class="mt-1 ml-4 list-disc"><strong>Latar Waktu:</strong> Kapan peristiwa terjadi.</li><li class="mt-1 ml-4 list-disc"><strong>Latar Suasana:</strong> Atmosfer atau emosi yang ingin dibangun (sedih, gembira, menyeramkan, dll).</li></ul>' },
+                { title: 'Amanat', content: 'Pesan moral atau pelajaran yang ingin disampaikan oleh penulis naskah dan sutradara kepada penonton.' },
+                { title: 'Petunjuk Teknis (Teks Samping)', content: 'Petunjuk untuk mementaskan naskah drama, seperti keterangan lakuan (gerak-gerik), tata panggung, efek suara, dan efek lampu.' },
+                { title: 'Interpretasi Kehidupan', content: 'Drama adalah tiruan kehidupan manusia atau miniatur kehidupan manusia yang dipentaskan untuk direfleksikan.' }
+            ];
+
+            const container = document.getElementById('accordion-container');
+
+            accordionData.forEach((item, index) => {
+                const accordionItem = document.createElement('div');
+                accordionItem.className = 'border border-gray-200 rounded-lg';
+
+                const button = document.createElement('button');
+                button.className = 'accordion-button w-full flex justify-between items-center p-4 text-left font-semibold text-lg bg-stone-100 hover:bg-teal-100 focus:outline-none transition-colors duration-300';
+                button.innerHTML = `
+                    <span>${item.title}</span>
+                    <span class="icon transform text-teal-600 text-2xl">&plus;</span>
+                `;
+
+                const content = document.createElement('div');
+                content.className = 'accordion-content bg-white p-4 text-gray-700';
+                content.innerHTML = `<div class="border-t border-gray-200 pt-4">${item.content}</div>`;
+
+                accordionItem.appendChild(button);
+                accordionItem.appendChild(content);
+                container.appendChild(accordionItem);
+            });
+            
+            container.addEventListener('click', function(e) {
+                const button = e.target.closest('.accordion-button');
+                if (!button) return;
+
+                const allButtons = container.querySelectorAll('.accordion-button');
+                const content = button.nextElementSibling;
+                const icon = button.querySelector('.icon');
+                
+                // Close other accordions
+                allButtons.forEach(b => {
+                    if (b !== button) {
+                        b.classList.remove('active');
+                        b.nextElementSibling.style.maxHeight = null;
+                        b.querySelector('.icon').innerHTML = '&plus;';
+                        b.querySelector('.icon').style.transform = 'rotate(0deg)';
+
+                    }
+                });
+
+                // Toggle current accordion
+                button.classList.toggle('active');
+                if (button.classList.contains('active')) {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    icon.innerHTML = '&minus;';
+                    icon.style.transform = 'rotate(180deg)';
+                } else {
+                    content.style.maxHeight = null;
+                    icon.innerHTML = '&plus;';
+                    icon.style.transform = 'rotate(0deg)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
